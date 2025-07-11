@@ -73,3 +73,21 @@
   z-index: 5;
   font-family: monospace;
 }
+
+@media (max-width: 768px) {
+  .obstacle {
+    -webkit-animation: slidein 3s linear infinite;
+    animation: slidein 3s linear infinite;
+    bottom: 25px;
+  }
+  
+  @-webkit-keyframes slidein {
+    from { left: 100%; }
+    to { left: -100px; }
+  }
+
+  @keyframes slidein {
+    from { left: 100%; }
+    to { left: -100px; }
+  }
+}
