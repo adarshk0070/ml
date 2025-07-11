@@ -166,8 +166,8 @@ export default function BikeGame() {
   }, [gameOver]);
 
   useEffect(() => {
-    const handleKeyUp = (e) => {
-      if (e.code === "Space" && !isJumping && !gameOver) {
+    const handleJump = () => {
+      if (!isJumping && !gameOver) {
         setJumps((prev) => prev + 1);
         setIsJumping(true);
         playSound("jump");
@@ -175,12 +175,27 @@ export default function BikeGame() {
       }
     };
 
-    // Add both keyboard and touch controls
-    window.addEventListener("keyup", handleKeyUp);
-    window.addEventListener("touchstart", handleKeyUp);
+    // Mobile-first touch controls
+    const gameContainer = document.querySelector('.game-container');
+    
+    const handleSpace = (e) => {
+      if (e.code === 'Space') handleJump();
+    };
+    
+    const handleTap = (e) => {
+      e.preventDefault();
+      handleJump();
+    };
+
+    // Attach events to game container for better mobile handling
+    window.addEventListener('keyup', handleSpace);
+    gameContainer?.addEventListener('touchstart', handleTap);
+    gameContainer?.addEventListener('click', handleTap);
+
     return () => {
-      window.removeEventListener("keyup", handleKeyUp);
-      window.removeEventListener("touchstart", handleKeyUp);
+      window.removeEventListener('keyup', handleSpace);
+      gameContainer?.removeEventListener('touchstart', handleTap);
+      gameContainer?.removeEventListener('click', handleTap);
     };
   }, [isJumping, gameOver]);
 
@@ -380,8 +395,12 @@ export default function BikeGame() {
     .game-container {
       position: relative;
       width: 100%;
+      width: 100%;
+      height: 50vh;
       max-width: 1000px;
-      height: 200px;
+      min-height: 200px;
+      max-height: 400px;
+      touch-action: none; /* Disable browser touch gestures */
       overflow: hidden;
       margin: 20px auto;
     }
@@ -452,7 +471,60 @@ export default function BikeGame() {
     }
 
     /* Mobile-first responsive design */
-    @media (max-width: 480px) {
+    @media (max-width: 767px) {
+      .game-container {
+        height: 40vh;
+      }
+      
+      .bike {
+        width: 50px !important;
+        height: 50px !important;
+        left: 15% !important;
+      }
+      
+      .obstacle {
+        width: 40px !important;
+        height: 40px !important;
+        left: 85% !important;
+      }
+      
+      .scoreboard {
+        padding: 10px;
+        font-size: 14px;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .game-container {
+        height: 50vh;
+      }
+      
+      .bike {
+        width: 70px !important;
+        height: 70px !important;
+      }
+      
+      .obstacle {
+        width: 60px !important;
+        height: 60px !important;
+      }
+    }
+
+    @media (min-width: 1025px) {
+      .game-container {
+        height: 60vh;
+      }
+      
+      .bike {
+        width: 80px !important;
+        height: 80px !important;
+      }
+      
+      .obstacle {
+        width: 70px !important;
+        height: 70px !important;
+      }
+    }
       .game-container {
         height: 150px;
       }
@@ -509,7 +581,8 @@ export default function BikeGame() {
       .scoreboard {
         font-size: 14px;
         padding: 15px;
-        touch-action: manipulation; /* Prevent browser touch gestures */
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
       }
     }
   `}
@@ -542,7 +615,7 @@ export default function BikeGame() {
                     : obstacleImage
                 })`,
                 height: obstacleType === "bird" ? "40px" : "60px",
-                bottom: obstacleType === "bird" ? "80px" : "20px",
+                bottom: obstacleType === "bird" ? "120px" : "20px",
               }}
             />
           )}
