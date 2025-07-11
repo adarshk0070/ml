@@ -6,9 +6,9 @@ const GameList = () => {
 
   const games = [
     {
-      title: "Chrome Dino",
-      path: "/games/dino",
-      description: "Run, jump, and survive in offline mode!",
+      title: "Bike Racing",
+      path: "/games/bike",
+      description: "Race, jump, and survive with your bike!",
     },
     {
       title: "Quiz Game",

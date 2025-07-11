@@ -3,7 +3,7 @@
 // import { HashRouter as Router, Routes, Route } from "react-router-dom"; // 👈
 // import Home from "./Home";
 // import GameList from "./GameList";
-// import DinoGame from "./components/DinoGame";
+// import BikeGame from "./components/BikeGame";
 // import QuizGame from "./components/QuizGame";
 
 // function App() {
@@ -12,7 +12,7 @@
 //       <Routes>
 //         <Route path="/" element={<Home />} />
 //         <Route path="/games" element={<GameList />} />
-//         <Route path="/games/dino" element={<DinoGame />} />
+//         <Route path="/games/bike" element={<BikeGame />} />
 //         <Route path="/games/quiz" element={<QuizGame />} />
 //       </Routes>
 //     </Router>
@@ -35,20 +35,25 @@ import Home from "./Home";
 import GameList from "./GameList";
 
 // ✅ Lazy load game components
-const DinoGame = lazy(() => import("./components/DinoGame"));
+const BikeGame = lazy(() => import("./components/BikeGame"));
 const QuizGame = lazy(() => import("./components/QuizGame"));
 
-// Debug component to log route changes
+// Debug component to log route changes (only in development)
 function RouteDebugger() {
   const location = useLocation();
   useEffect(() => {
-    console.log(`🧭 Route changed to: ${location.pathname}${location.hash}`);
+    if (process.env.NODE_ENV === "development") {
+      console.log(`🧭 Route changed to: ${location.pathname}${location.hash}`);
+    }
   }, [location]);
   return null;
 }
 
 function App() {
-  console.log("🎮 App component mounting...");
+  // Only log in development mode
+  if (process.env.NODE_ENV === "development") {
+    console.log("🎮 App component mounting...");
+  }
 
   return (
     <Router>
@@ -64,7 +69,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/games" element={<GameList />} />
-          <Route path="/games/dino" element={<DinoGame />} />
+          <Route path="/games/bike" element={<BikeGame />} />
           <Route path="/games/quiz" element={<QuizGame />} />
         </Routes>
       </Suspense>

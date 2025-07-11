@@ -1,0 +1,5 @@
+/* Bike component styles */
+.bike {
+  border-radius: 5px;
+  object-fit: cover;
+}

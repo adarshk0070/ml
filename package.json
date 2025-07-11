@@ -1,14 +1,13 @@
 {
-  "name": "chrome-dino-clone",
+  "name": "bike-racing-game",
   "version": "1.0.0",
-  "description": "A clone of the Chrome Dino game built with React.",
+  "description": "A bike racing game built with React.",
   "main": "src/main.jsx",
   "scripts": {
-    "start": "webpack serve --port 3001 --mode development",
+    "start": "webpack serve --port 3002 --mode development",
     "build": "webpack --mode production",
     "vercel-build": "npm run build"
   },
-
   "dependencies": {
     "file-saver": "^2.0.5",
     "framer-motion": "^5.6.0",
@@ -32,12 +31,11 @@
     "webpack-dev-server": "^4.15.2"
   },
   "keywords": [
-    "chrome",
-    "dino",
+    "bike",
+    "racing",
     "game",
     "react"
   ],
   "author": "Your Name",
   "license": "MIT"
-
 }
