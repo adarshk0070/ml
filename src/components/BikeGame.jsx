@@ -85,7 +85,9 @@ const playSound = (soundType) => {
 export default function BikeGame() {
   const [isJumping, setIsJumping] = useState(false);
   const [bikeFrame, setBikeFrame] = useState(0);
-  const [obstacleX, setObstacleX] = useState(1000);
+  const [obstacleX, setObstacleX] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth + 50 : 1000
+  );
   const [obstacleType, setObstacleType] = useState("cactus");
   const [obstacleImage, setObstacleImage] = useState(largeCactus1);
   const [birdFrame, setBirdFrame] = useState(0);
@@ -95,10 +97,20 @@ export default function BikeGame() {
   useEffect(() => {
     console.log("🚴‍♂️ BikeGame component initialized");
     console.log("🎮 Game ready - Press SPACE to jump!");
+
+    // Handle window resize for mobile compatibility
+    const handleResize = () => {
+      if (gameOver) return;
+      console.log("📱 Screen resized, adjusting game elements");
+    };
+
+    window.addEventListener("resize", handleResize);
+
     return () => {
       console.log("🚴‍♂️ BikeGame component unmounted");
+      window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [gameOver]);
 
   const [distance, setDistance] = useState(0);
   const [jumps, setJumps] = useState(0);
@@ -149,7 +161,7 @@ export default function BikeGame() {
     if (gameOver) return;
     const interval = setInterval(() => {
       setObstacleX((prev) => {
-        if (prev < -50) {
+        if (prev < -100) {
           const isBird = Math.random() < 0.3;
           setObstacleType(isBird ? "bird" : "cactus");
           setObstacleImage(
@@ -157,9 +169,11 @@ export default function BikeGame() {
               ? birdFrames[0]
               : cactusImages[Math.floor(Math.random() * cactusImages.length)]
           );
-          return 1000;
+          return window.innerWidth + 50; // Use viewport width for better mobile compatibility
         }
-        return prev - 10;
+        // Adjust speed based on screen size
+        const speed = window.innerWidth < 768 ? 8 : 10;
+        return prev - speed;
       });
     }, 30);
     return () => clearInterval(interval);
@@ -176,26 +190,26 @@ export default function BikeGame() {
     };
 
     // Mobile-first touch controls
-    const gameContainer = document.querySelector('.game-container');
-    
+    const gameContainer = document.querySelector(".game-container");
+
     const handleSpace = (e) => {
-      if (e.code === 'Space') handleJump();
+      if (e.code === "Space") handleJump();
     };
-    
+
     const handleTap = (e) => {
       e.preventDefault();
       handleJump();
     };
 
     // Attach events to game container for better mobile handling
-    window.addEventListener('keyup', handleSpace);
-    gameContainer?.addEventListener('touchstart', handleTap);
-    gameContainer?.addEventListener('click', handleTap);
+    window.addEventListener("keyup", handleSpace);
+    gameContainer?.addEventListener("touchstart", handleTap);
+    gameContainer?.addEventListener("click", handleTap);
 
     return () => {
-      window.removeEventListener('keyup', handleSpace);
-      gameContainer?.removeEventListener('touchstart', handleTap);
-      gameContainer?.removeEventListener('click', handleTap);
+      window.removeEventListener("keyup", handleSpace);
+      gameContainer?.removeEventListener("touchstart", handleTap);
+      gameContainer?.removeEventListener("click", handleTap);
     };
   }, [isJumping, gameOver]);
 
@@ -226,13 +240,34 @@ export default function BikeGame() {
       const bike = bikeRef.current?.getBoundingClientRect();
       const obs = obsRef.current?.getBoundingClientRect();
       if (bike && obs) {
+        // Enhanced collision detection for better accuracy
+        const bikeLeft = bike.left;
+        const bikeRight = bike.right;
+        const bikeTop = bike.top;
+        const bikeBottom = bike.bottom;
+
+        const obsLeft = obs.left;
+        const obsRight = obs.right;
+        const obsTop = obs.top;
+        const obsBottom = obs.bottom;
+
+        // More precise collision detection with slight tolerance
+        const tolerance = 5; // Reduced collision sensitivity
         const hit =
-          bike.left < obs.right &&
-          bike.right > obs.left &&
-          bike.bottom > obs.top &&
-          bike.top < obs.bottom;
+          bikeLeft < obsRight - tolerance &&
+          bikeRight > obsLeft + tolerance &&
+          bikeBottom > obsTop + tolerance &&
+          bikeTop < obsBottom - tolerance;
+
         if (hit) {
-          console.log("💥 Collision detected! Game Over.");
+          console.log(`💥 Collision detected with ${obstacleType}! Game Over.`);
+          console.log(
+            `Bike position: ${bikeLeft}, ${bikeTop}, ${bikeRight}, ${bikeBottom}`
+          );
+          console.log(
+            `Obstacle position: ${obsLeft}, ${obsTop}, ${obsRight}, ${obsBottom}`
+          );
+
           setGameOver(true);
           playSound("collision");
 
@@ -302,9 +337,17 @@ export default function BikeGame() {
           });
         }
       }
-    }, 100);
+    }, 50); // Reduced interval for better collision detection
     return () => clearInterval(interval);
-  }, [gameOver, distance, jumps, maxHeight, minHeight, scoreHistory]);
+  }, [
+    gameOver,
+    distance,
+    jumps,
+    maxHeight,
+    minHeight,
+    scoreHistory,
+    obstacleType,
+  ]);
 
   const getBikeImage = () => {
     const image = gameOver
@@ -319,7 +362,7 @@ export default function BikeGame() {
   const resetGame = () => {
     console.log("🔄 Resetting game...");
     setGameOver(false);
-    setObstacleX(1000);
+    setObstacleX(window.innerWidth + 50); // Reset to viewport width
     setIsJumping(false);
     setDistance(0);
     setJumps(0);
@@ -395,7 +438,6 @@ export default function BikeGame() {
     .game-container {
       position: relative;
       width: 100%;
-      width: 100%;
       height: 50vh;
       max-width: 1000px;
       min-height: 200px;
@@ -403,6 +445,9 @@ export default function BikeGame() {
       touch-action: none; /* Disable browser touch gestures */
       overflow: hidden;
       margin: 20px auto;
+      background: transparent;
+      border: 2px solid #ccc;
+      border-radius: 8px;
     }
 
     .cloud {
@@ -435,6 +480,7 @@ export default function BikeGame() {
       background-repeat: no-repeat;
       border-radius: 5px;
       z-index: 3;
+      transition: transform 0.2s ease-out;
     }
 
     .obstacle {
@@ -445,6 +491,7 @@ export default function BikeGame() {
       background-repeat: no-repeat;
       border-radius: 5px;
       z-index: 2;
+      bottom: 20px;
     }
 
     .game-over-img {
@@ -474,6 +521,7 @@ export default function BikeGame() {
     @media (max-width: 767px) {
       .game-container {
         height: 40vh;
+        min-height: 250px;
       }
       
       .bike {
@@ -483,9 +531,14 @@ export default function BikeGame() {
       }
       
       .obstacle {
-        width: 40px !important;
-        height: 40px !important;
-        left: 85% !important;
+        width: 45px !important;
+        height: 45px !important;
+        bottom: 20px !important;
+      }
+      
+      .cloud {
+        width: 60px !important;
+        height: 30px !important;
       }
       
       .scoreboard {

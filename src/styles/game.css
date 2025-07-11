@@ -3,7 +3,7 @@
   width: 100%;
   height: 200px;
   overflow: hidden;
-  background: #f4f4f4;
+  background: transparent;
   border: 2px solid #ccc;
 }
 
@@ -74,20 +74,26 @@
   font-family: monospace;
 }
 
+/* Remove conflicting mobile animations - handled by React state */
 @media (max-width: 768px) {
-  .obstacle {
-    -webkit-animation: slidein 3s linear infinite;
-    animation: slidein 3s linear infinite;
-    bottom: 25px;
-  }
-  
-  @-webkit-keyframes slidein {
-    from { left: 100%; }
-    to { left: -100px; }
+  .game-container {
+    height: 40vh;
+    min-height: 250px;
   }
 
-  @keyframes slidein {
-    from { left: 100%; }
-    to { left: -100px; }
+  .bike {
+    width: 50px;
+    height: 50px;
+  }
+
+  .obstacle {
+    width: 45px;
+    height: 45px;
+    bottom: 20px;
+  }
+
+  .cloud {
+    width: 60px;
+    height: 30px;
   }
 }
