@@ -1,64 +1,23 @@
-// // src/App.jsx
-// import React from "react";
-// import { HashRouter as Router, Routes, Route } from "react-router-dom"; // 👈
-// import Home from "./Home";
-// import GameList from "./GameList";
-// import BikeGame from "./components/BikeGame";
-// import QuizGame from "./components/QuizGame";
-
-// function App() {
-//   return (
-//     <Router>
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//         <Route path="/games" element={<GameList />} />
-//         <Route path="/games/bike" element={<BikeGame />} />
-//         <Route path="/games/quiz" element={<QuizGame />} />
-//       </Routes>
-//     </Router>
-//   );
-// }
-
-// export default App;
-
 // src/App.jsx
-import React, { Suspense, lazy, useEffect } from "react";
-import {
-  HashRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
+import React, { Suspense, lazy } from "react";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 // Regular imports
 import Home from "./Home";
-import GameList from "./GameList";
+import GameMenu from "./components/GameMenu";
 
-// ✅ Lazy load game components
+// Lazy load game components
 const BikeGame = lazy(() => import("./components/BikeGame"));
 const QuizGame = lazy(() => import("./components/QuizGame"));
-
-// Debug component to log route changes (only in development)
-function RouteDebugger() {
-  const location = useLocation();
-  useEffect(() => {
-    if (process.env.NODE_ENV === "development") {
-      console.log(`🧭 Route changed to: ${location.pathname}${location.hash}`);
-    }
-  }, [location]);
-  return null;
-}
+const CarGame = lazy(() => import("./components/CarGame"));
+const ChessGame = lazy(() => import("./components/ChessGame"));
+const TicTacToe = lazy(() => import("./components/TicTacToe"));
+const ConnectFour = lazy(() => import("./components/ConnectFour"));
+const SnakeAndLadder = lazy(() => import("./components/SnakeAndLadder"));
 
 function App() {
-  // Only log in development mode
-  if (process.env.NODE_ENV === "development") {
-    console.log("🎮 App component mounting...");
-  }
-
   return (
     <Router>
-      <RouteDebugger />
-      {/* Wrap routes in Suspense to show fallback while loading */}
       <Suspense
         fallback={
           <div style={{ textAlign: "center", marginTop: "50px" }}>
@@ -68,9 +27,14 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/games" element={<GameList />} />
+          <Route path="/games" element={<GameMenu />} />
           <Route path="/games/bike" element={<BikeGame />} />
           <Route path="/games/quiz" element={<QuizGame />} />
+          <Route path="/games/car" element={<CarGame />} />
+          <Route path="/games/chess" element={<ChessGame />} />
+          <Route path="/games/tictactoe" element={<TicTacToe />} />
+          <Route path="/games/connect4" element={<ConnectFour />} />
+          <Route path="/games/snakeladder" element={<SnakeAndLadder />} />
         </Routes>
       </Suspense>
     </Router>

@@ -1,3 +1,4 @@
+/* Bike game styles */
 .game-container {
   position: relative;
   width: 100%;
@@ -5,6 +6,144 @@
   overflow: hidden;
   background: transparent;
   border: 2px solid #ccc;
+}
+
+/* Car game container */
+.car-game-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.parallax-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.parallax-layer {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat-x;
+  animation: parallax linear infinite;
+}
+
+.layer {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat-x;
+  animation: parallax linear infinite;
+}
+
+.layer-1 {
+  background-image: url("../assets/tracks/highway.svg");
+  animation-duration: 20s;
+  opacity: 0.2;
+}
+
+.layer-2 {
+  background-image: url("../assets/tracks/hill.svg");
+  animation-duration: 15s;
+  opacity: 0.4;
+}
+
+.layer-3 {
+  background-image: url("../assets/tracks/offroad.svg");
+  animation-duration: 10s;
+  opacity: 0.6;
+}
+
+.game-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+@keyframes parallax {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.selection-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  color: white;
+}
+
+.selection-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.selection-card.selected {
+  border: 2px solid #4caf50;
+  background: rgba(76, 175, 80, 0.2);
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
+}
+
+.selection-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.selection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  width: 100%;
+}
+
+/* Audio Control */
+.audio-control {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.audio-control:hover {
+  transform: scale(1.1);
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.audio-control img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
 }
 
 .track {
@@ -74,7 +213,40 @@
   font-family: monospace;
 }
 
-/* Remove conflicting mobile animations - handled by React state */
+/* Selection screen styles */
+.selection-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: white;
+  text-align: center;
+}
+
+.selection-screen h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.selection-screen h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #fff;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Mobile responsive styles */
 @media (max-width: 768px) {
   .game-container {
     height: 40vh;
@@ -95,5 +267,33 @@
   .cloud {
     width: 60px;
     height: 30px;
+  }
+
+  .selection-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .selection-card {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+
+  .selection-card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .selection-screen h1 {
+    font-size: 2rem;
+  }
+
+  .selection-screen h2 {
+    font-size: 1.5rem;
+  }
+
+  .game-content {
+    padding: 1rem;
   }
 }

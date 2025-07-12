@@ -23,10 +23,14 @@ module.exports = {
     new HtmlWebpackPlugin({ template: "./public/index.html" }),
   ],
   devServer: {
-    historyApiFallback: true, // Critical for React Router
+    historyApiFallback: true,
     static: { directory: path.join(__dirname, "public") },
     compress: true,
-    port: 8080,
+    port: 3003,
     open: true,
+    hot: true,
+    client: {
+      overlay: true,
+    },
   },
 };

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <!-- Sky Background -->
+  <rect x="0" y="0" width="400" height="200" fill="#87CEEB"/>
+  
+  <!-- Sun -->
+  <circle cx="350" cy="50" r="20" fill="#FFD700"/>
+  <circle cx="350" cy="50" r="25" fill="#FFD700" opacity="0.3"/>
+  
+  <!-- Clouds -->
+  <path d="M50 40 C60 35 70 35 80 40 C90 30 100 30 110 40 C120 35 130 35 140 40 C140 50 110 50 80 50 C50 50 50 40 50 40" fill="white" opacity="0.8"/>
+  <path d="M250 60 C260 55 270 55 280 60 C290 50 300 50 310 60 C320 55 330 55 340 60 C340 70 310 70 280 70 C250 70 250 60 250 60" fill="white" opacity="0.8"/>
+  
+  <!-- Mountains Background -->
+  <path d="M0 100 L100 20 L200 120 L300 40 L400 100" fill="#4CAF50" opacity="0.5"/>
+  
+  <!-- Track Base -->
+  <path d="M0 150 C100 50 200 180 300 80 C350 30 400 100 400 100" 
+        fill="none" stroke="#424242" stroke-width="30"/>
+  
+  <!-- Track Surface -->
+  <path d="M0 150 C100 50 200 180 300 80 C350 30 400 100 400 100" 
+        fill="none" stroke="#616161" stroke-width="28"/>
+  
+  <!-- Guard Rails -->
+  <path d="M0 135 C100 35 200 165 300 65 C350 15 400 85 400 85" 
+        fill="none" stroke="#FDD835" stroke-width="2"/>
+  <path d="M0 165 C100 65 200 195 300 95 C350 45 400 115 400 115" 
+        fill="none" stroke="#FDD835" stroke-width="2"/>
+  
+  <!-- Track Markers -->
+  <path d="M50 120 L50 140" stroke="white" stroke-width="2"/>
+  <path d="M150 100 L150 120" stroke="white" stroke-width="2"/>
+  <path d="M250 140 L250 160" stroke="white" stroke-width="2"/>
+  <path d="M350 90 L350 110" stroke="white" stroke-width="2"/>
+  
+  <!-- Distance Signs -->
+  <rect x="45" y="110" width="10" height="5" fill="#FFF" stroke="#000"/>
+  <rect x="145" y="90" width="10" height="5" fill="#FFF" stroke="#000"/>
+  <rect x="245" y="130" width="10" height="5" fill="#FFF" stroke="#000"/>
+  <rect x="345" y="80" width="10" height="5" fill="#FFF" stroke="#000"/>
+  
+  <!-- Trees -->
+  <circle cx="30" cy="130" r="10" fill="#2E7D32"/>
+  <circle cx="130" cy="80" r="10" fill="#2E7D32"/>
+  <circle cx="230" cy="160" r="10" fill="#2E7D32"/>
+  <circle cx="330" cy="70" r="10" fill="#2E7D32"/>
+</svg>

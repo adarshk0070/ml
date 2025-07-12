@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
+  <!-- Car Body -->
+  <path d="M30 55 L50 35 L150 35 L170 55 L170 75 L30 75 Z" fill="#3B82F6"/>
+  
+  <!-- Windows -->
+  <path d="M60 40 L75 40 L75 50 L60 50 Z" fill="#1E293B"/>
+  <path d="M125 40 L140 40 L140 50 L125 50 Z" fill="#1E293B"/>
+  
+  <!-- Wheels -->
+  <circle cx="65" cy="75" r="15" fill="#1E293B"/>
+  <circle cx="135" cy="75" r="15" fill="#1E293B"/>
+  <circle cx="65" cy="75" r="8" fill="#4B5563"/>
+  <circle cx="135" cy="75" r="8" fill="#4B5563"/>
+  
+  <!-- Details -->
+  <path d="M30 60 L170 60" stroke="#1D4ED8" stroke-width="2"/>
+  <path d="M90 35 L110 35" stroke="#1D4ED8" stroke-width="4"/>
+  
+  <!-- Spoiler -->
+  <path d="M150 35 L160 25 L170 35" fill="#2563EB"/>
+  
+  <!-- Headlights -->
+  <path d="M35 55 L45 45" stroke="#FCD34D" stroke-width="3"/>
+  <path d="M155 45 L165 55" stroke="#FCD34D" stroke-width="3"/>
+</svg>

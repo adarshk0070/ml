@@ -4,7 +4,7 @@
   "description": "A bike racing game built with React.",
   "main": "src/main.jsx",
   "scripts": {
-    "start": "webpack serve --port 3003 --mode development",
+    "start": "webpack serve --port 3001 --mode development",
     "build": "webpack --mode production",
     "vercel-build": "npm run build"
   },

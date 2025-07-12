@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <!-- Background -->
+  <rect width="400" height="200" fill="#92400E"/>
+  
+  <!-- Track Base -->
+  <path d="M50 50 C100 30 150 80 200 50 C250 20 300 70 350 50 L350 150 C300 170 250 120 200 150 C150 180 100 130 50 150 Z" fill="#78350F"/>
+  
+  <!-- Track Details -->
+  <path d="M50 70 C100 50 150 100 200 70 C250 40 300 90 350 70" fill="none" stroke="#92400E" stroke-width="5" stroke-dasharray="10 5"/>
+  <path d="M50 130 C100 150 150 100 200 130 C250 160 300 110 350 130" fill="none" stroke="#92400E" stroke-width="5" stroke-dasharray="10 5"/>
+  
+  <!-- Obstacles -->
+  <circle cx="120" cy="90" r="8" fill="#7C2D12"/>
+  <circle cx="280" cy="110" r="8" fill="#7C2D12"/>
+  <rect x="180" y="80" width="15" height="15" transform="rotate(45 187.5 87.5)" fill="#7C2D12"/>
+  
+  <!-- Track Edges -->
+  <path d="M50 50 C100 30 150 80 200 50 C250 20 300 70 350 50" fill="none" stroke="#7C2D12" stroke-width="3"/>
+  <path d="M50 150 C100 170 150 120 200 150 C250 180 300 130 350 150" fill="none" stroke="#7C2D12" stroke-width="3"/>
+  
+  <!-- Decorative Elements -->
+  <circle cx="80" cy="40" r="3" fill="#92400E"/>
+  <circle cx="160" cy="140" r="3" fill="#92400E"/>
+  <circle cx="240" cy="60" r="3" fill="#92400E"/>
+  <circle cx="320" cy="160" r="3" fill="#92400E"/>
+</svg>

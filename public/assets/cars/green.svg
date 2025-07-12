@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
+  <!-- Car Body -->
+  <path d="M20 45 L50 35 L150 35 L180 45 L180 75 L20 75 Z" fill="#2E7D32"/>
+  
+  <!-- Windows -->
+  <path d="M55 40 L80 40 L80 55 L55 55 Z" fill="#87CEEB"/>
+  <path d="M85 40 L115 40 L115 55 L85 55 Z" fill="#87CEEB"/>
+  <path d="M120 40 L145 40 L145 55 L120 55 Z" fill="#87CEEB"/>
+  
+  <!-- Wheels -->
+  <circle cx="55" cy="75" r="20" fill="#1A1A1A"/>
+  <circle cx="55" cy="75" r="12" fill="#4A4A4A"/>
+  <circle cx="145" cy="75" r="20" fill="#1A1A1A"/>
+  <circle cx="145" cy="75" r="12" fill="#4A4A4A"/>
+  
+  <!-- Details -->
+  <path d="M20 60 L180 60" stroke="#1B5E20" stroke-width="2"/>
+  <rect x="25" y="45" width="15" height="7" fill="#FFD700"/> <!-- Headlight -->
+  <rect x="160" y="45" width="15" height="7" fill="#FF4444"/> <!-- Taillight -->
+  
+  <!-- Off-road Features -->
+  <rect x="20" y="75" width="160" height="5" fill="#1B5E20"/> <!-- Reinforced Bottom -->
+  <path d="M40 35 L60 25 L140 25 L160 35" fill="#1B5E20"/> <!-- Roof Rack -->
+  
+  <!-- Bull Bar -->
+  <path d="M15 50 L25 50 L25 70 L15 70" fill="#1B5E20"/>
+  
+  <!-- Side Steps -->
+  <rect x="60" y="70" width="80" height="3" fill="#1B5E20"/>
+  
+  <!-- Snorkel -->
+  <path d="M140 35 L140 20 L135 15" fill="none" stroke="#1B5E20" stroke-width="3"/>
+</svg>

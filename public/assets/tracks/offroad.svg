@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <!-- Background -->
+  <rect x="0" y="0" width="400" height="200" fill="#8B4513"/>
+  
+  <!-- Track Base -->
+  <path d="M0 50 C50 30 100 80 150 50 C200 20 250 70 300 40 C350 10 400 60 400 30" 
+        fill="none" stroke="#654321" stroke-width="40"/>
+  
+  <!-- Track Details -->
+  <path d="M0 50 C50 30 100 80 150 50 C200 20 250 70 300 40 C350 10 400 60 400 30" 
+        fill="none" stroke="#5D4037" stroke-width="2" stroke-dasharray="10,5"/>
+  
+  <!-- Rocks -->
+  <circle cx="50" cy="70" r="8" fill="#757575"/>
+  <circle cx="150" cy="40" r="6" fill="#757575"/>
+  <circle cx="250" cy="60" r="7" fill="#757575"/>
+  <circle cx="350" cy="50" r="5" fill="#757575"/>
+  
+  <!-- Mud Patches -->
+  <ellipse cx="100" cy="60" rx="20" ry="10" fill="#3E2723" opacity="0.5"/>
+  <ellipse cx="200" cy="45" rx="15" ry="8" fill="#3E2723" opacity="0.5"/>
+  <ellipse cx="300" cy="35" rx="25" ry="12" fill="#3E2723" opacity="0.5"/>
+  
+  <!-- Jump Ramps -->
+  <path d="M75 70 L85 50 L95 70" fill="#795548"/>
+  <path d="M175 45 L185 25 L195 45" fill="#795548"/>
+  <path d="M275 55 L285 35 L295 55" fill="#795548"/>
+  
+  <!-- Track Markers -->
+  <rect x="25" y="40" width="2" height="20" fill="white"/>
+  <rect x="125" y="30" width="2" height="20" fill="white"/>
+  <rect x="225" y="50" width="2" height="20" fill="white"/>
+  <rect x="325" y="20" width="2" height="20" fill="white"/>
+  
+  <!-- Background Details -->
+  <circle cx="30" cy="150" r="15" fill="#795548"/> <!-- Bush -->
+  <circle cx="130" cy="170" r="20" fill="#795548"/> <!-- Bush -->
+  <circle cx="230" cy="160" r="18" fill="#795548"/> <!-- Bush -->
+  <circle cx="330" cy="180" r="16" fill="#795548"/> <!-- Bush -->
+  
+  <!-- Distance Markers -->
+  <text x="50" y="180" fill="white" font-size="10">1000m</text>
+  <text x="150" y="180" fill="white" font-size="10">2000m</text>
+  <text x="250" y="180" fill="white" font-size="10">3000m</text>
+  <text x="350" y="180" fill="white" font-size="10">4000m</text>
+</svg>

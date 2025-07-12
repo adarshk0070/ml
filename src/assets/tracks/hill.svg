@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <!-- Sky Background -->
+  <rect width="400" height="200" fill="#60A5FA"/>
+  
+  <!-- Mountains in Background -->
+  <path d="M0 80 L100 20 L200 90 L300 10 L400 70 L400 200 L0 200 Z" fill="#1E40AF"/>
+  
+  <!-- Track Base -->
+  <path d="M50 150 Q100 50 200 150 Q300 250 350 150" fill="#374151"/>
+  
+  <!-- Track Surface Details -->
+  <path d="M50 140 Q100 40 200 140 Q300 240 350 140" fill="none" stroke="#4B5563" stroke-width="2" stroke-dasharray="5 5"/>
+  <path d="M50 160 Q100 60 200 160 Q300 260 350 160" fill="none" stroke="#4B5563" stroke-width="2" stroke-dasharray="5 5"/>
+  
+  <!-- Guard Rails -->
+  <path d="M50 130 Q100 30 200 130 Q300 230 350 130" fill="none" stroke="#DC2626" stroke-width="3"/>
+  <path d="M50 170 Q100 70 200 170 Q300 270 350 170" fill="none" stroke="#DC2626" stroke-width="3"/>
+  
+  <!-- Track Markers -->
+  <circle cx="100" cy="120" r="3" fill="#F59E0B"/>
+  <circle cx="200" cy="150" r="3" fill="#F59E0B"/>
+  <circle cx="300" cy="180" r="3" fill="#F59E0B"/>
+  
+  <!-- Clouds -->
+  <circle cx="50" cy="40" r="10" fill="#E0F2FE"/>
+  <circle cx="65" cy="40" r="12" fill="#E0F2FE"/>
+  <circle cx="250" cy="30" r="15" fill="#E0F2FE"/>
+  <circle cx="270" cy="30" r="12" fill="#E0F2FE"/>
+  
+  <!-- Sun -->
+  <circle cx="350" cy="50" r="20" fill="#FCD34D"/>
+</svg>
